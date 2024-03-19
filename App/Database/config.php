@@ -21,7 +21,7 @@ return [
         ],
         'pgsql' => [
             'host' => 'localhost',
-            'db_name' => 'postgres',
+            'db_name' => 'crud_bd',
             'username' => 'root',
             'password' => '',
             'port' => '5432', 
@@ -29,8 +29,8 @@ return [
         ],
         'mongodb' => [
             'host' => 'localhost',
-            'db_name' => 'crud_bd_mongo',
-            'username' => 'mongo_user',
+            'db_name' => 'crud_bd',
+            'username' => 'root',
             'password' => '',
             'port' => '27017', 
         ]

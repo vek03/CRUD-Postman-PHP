@@ -1,6 +1,6 @@
-# Projeto Mega
+# Projeto Clientes
 
-O Projeto Mega é uma aplicação PHP destinada a gerenciar inserções de dados numéricos em um banco de dados MySQL de forma eficiente e performática para fins educacionais.
+O Projeto clientes é uma aplicação PHP destinada a gerenciar inserções de dados em um banco de dados MySQL de forma eficiente e performática para fins educacionais.
 
 ## Recursos
 
@@ -12,14 +12,16 @@ O Projeto Mega é uma aplicação PHP destinada a gerenciar inserções de dados
 
 ## Inicialização do Projeto
 
-Para começar a usar o Projeto Mega, você precisa ter o Composer instalado. Se você ainda não tem o Composer, visite [Get Composer](https://getcomposer.org/) para instruções de instalação.
+Para começar a usar o Projeto Clientes, você precisa ter o Composer instalado. Se você ainda não tem o Composer, visite [Get Composer](https://getcomposer.org/) para instruções de instalação.
 
 Uma vez que o Composer esteja instalado, clone o repositório e instale as dependências:
 
 ```bash
-git clone https://github.com/faustinopsy/perfomphp.git
-cd pperfomphp
+git clone https://github.com/vek03/CRUD-Postman-PHP
+cd CRUD-Postman-PHP
 composer install
+php -S localhost:8081
+abrir URL no Postaman: http://localhost:8081
 ```
 
 
@@ -29,7 +31,7 @@ Para armazenamento e gerenciamento de dados, utilizamos o MySQL devido à sua ro
 
 ### Tabela `clientes`
 
-A tabela `clientes` foi projetada para armazenar sequências numéricas geradas aleatoriamente. Cada registro representa uma sequência única e é identificado por um `id` autoincremental. Abaixo está o script SQL para criar a tabela `mega`:
+A tabela `clientes` foi projetada para armazenar dados simples de uma pessoa. Cada registro representa uma pessoa e é identificado por um `id` autoincremental. Abaixo está o script SQL para criar a tabela `clientes`:
 
 ```sql
 CREATE TABLE `clientes` (
@@ -41,3 +43,15 @@ CREATE TABLE `clientes` (
   PRIMARY KEY (`cliente_id`)
 ); ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
+
+### Busca `clientes`
+
+Para fazer uma busca ao realizar Update, selecione o método PUT em Body raw com a estrutura do JSON abaixo:
+
+{
+    "id": "3",
+    "nome": "Alex",
+    "email": "alex@gmail.com",
+    "cidade": "São Paulo",
+    "estado": "SP"
+}

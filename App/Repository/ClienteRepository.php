@@ -15,11 +15,10 @@ class ClienteRepository
     }
 
 
-    public function insertCliente(Cliente $cliente) 
+    public function create(Cliente $cliente) 
     {
         $nome = $cliente->getNome();
         $email = $cliente->getEmail();
-        $cidade = $cliente->getCidade();
         $cidade = $cliente->getCidade();
         $estado = $cliente->getEstado();
 
@@ -29,7 +28,6 @@ class ClienteRepository
 
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":cidade", $cidade);
         $stmt->bindParam(":cidade", $cidade);
         $stmt->bindParam(":estado", $estado);
 
@@ -41,7 +39,7 @@ class ClienteRepository
     }
 
 
-    public function getAll() 
+    public function readAll() 
     {
         $query = "SELECT * FROM clientes";
         $stmt = $this->conn->prepare($query);
@@ -51,9 +49,9 @@ class ClienteRepository
     }
 
 
-    public function getById(Cliente $cliente) {
-        $id = $cliente->getId();
-        $query = "SELECT * FROM cliente WHERE id = :id";
+    public function read(Cliente $cliente) {
+        $id = $cliente->getCliente_Id();
+        $query = "SELECT * FROM clientes WHERE cliente_id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id , PDO::PARAM_INT);
         $stmt->execute();
@@ -64,20 +62,41 @@ class ClienteRepository
 
     public function update(Cliente $cliente) 
     {
-        $query = "SELECT * FROM clientes";
+        $id = $cliente->getCliente_Id();
+        $nome = $cliente->getNome();
+        $email = $cliente->getEmail();
+        $cidade = $cliente->getCidade();
+        $estado = $cliente->getEstado();
+
+        $query = "UPDATE clientes SET nome = :nome, email = :email, cidade = :cidade, estado = :estado WHERE cliente_id = :id";
+
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":cidade", $cidade);
+        $stmt->bindParam(":estado", $estado);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
 
     public function delete(Cliente $cliente) 
     {
-        $query = "SELECT * FROM clientes";
+        $id = $cliente->getCliente_Id();
+        $query = "DELETE FROM clientes WHERE cliente_id = :id";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->bindParam(":id", $id , PDO::PARAM_INT);
         
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 }

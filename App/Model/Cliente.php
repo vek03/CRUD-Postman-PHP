@@ -20,7 +20,7 @@ class Cliente
         return $this->cliente_id;
     }
 
-    public function setClienteId(int $cliente_id)
+    public function setCliente_Id(int $cliente_id)
     {
         $this->cliente_id = $cliente_id;
     }
