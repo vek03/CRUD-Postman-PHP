@@ -1,0 +1,19 @@
+{
+    "name": "vek/crudpostman",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vek03",
+            "email": "vektromboni@gmail.com"
+        }
+    ],
+    "require": {
+        "php-pm/php-pm": "^2.1",
+        "php-pm/httpkernel-adapter": "^2.3",
+        "react/http": "^1.9"
+    }
+}
